@@ -1,0 +1,40 @@
+language: node_js
+
+node_js:
+  - 8
+  - 10
+  - 12
+
+cache: yarn
+
+install:
+  - travis_retry yarn install
+
+script:
+  - yarn lint
+
+before_deploy:
+  - npm version -no-git-tag-version $(git describe --abbrev=0 --tags)
+
+  - yarn docs
+  - yarn build
+
+  - echo 'zeroframe.js.org' > ./docs/_build/CNAME
+
+deploy:
+  - provider: pages
+    edge: true
+    on:
+      branch: master
+      node: 12
+    github_token: $GH_TOKEN
+    local_dir: docs/_build
+
+  - provider: npm
+    edge: true
+    on:
+      tags: true
+      node: 12
+    email: $NPM_EMAIL
+    api_key: $NPM_TOKEN
+    src: pkg
