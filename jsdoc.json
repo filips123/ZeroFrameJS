@@ -1,0 +1,31 @@
+{
+  "plugins": [
+    "plugins/markdown"
+  ],
+
+  "source": {
+    "include": "src"
+  },
+
+  "sourceType": "module",
+
+  "opts": {
+    "template": "node_modules/ink-docstrap/template",
+    "destination": "docs/_build",
+    "readme": "README.md",
+    "recurse": true
+  },
+
+  "templates": {
+    "systemName": "ZeroFrameJS",
+
+    "includeDate": true,
+    "dateFormat": "YYYY-MM-DD",
+
+    "theme": "cosmo",
+    "sort": false,
+
+    "linenums": true,
+    "outputSourceFiles": true
+  }
+}

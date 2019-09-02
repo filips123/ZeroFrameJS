@@ -1,0 +1,59 @@
+{
+  "name": "zeroframe-ws-client",
+  "version": "0.0.0",
+  "description": "ZeroFrame WebSocket API for JavaScript",
+  "keywords": [
+    "zeronet",
+    "zeroframe",
+    "websocket",
+    "library",
+    "p2p",
+    "decentralized"
+  ],
+  "author": "Filip Š <projects@filips.si> (https://projects.filips.si/)",
+  "license": "MIT",
+  "homepage": "https://github.com/filips123/ZeroFrameJS/",
+  "bugs": "https://github.com/filips123/ZeroFrameJS/issues/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filips123/ZeroFrameJS.git"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
+  },
+  "dependencies": {
+    "cross-fetch": "^3.0.4",
+    "isomorphic-ws": "^4.0.1",
+    "recursive-object-assign": "^1.0.1",
+    "ws": "^7.1.2"
+  },
+  "devDependencies": {
+    "@pika/cli": "^0.2.0",
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-node": "^0.6.0",
+    "@pika/plugin-build-web": "^0.6.0",
+    "@pika/plugin-standard-pkg": "^0.6.0",
+    "@pika/types": "^0.6.0",
+    "ink-docstrap": "^1.3.2",
+    "jsdoc": "^3.6.3",
+    "standard": "^14.1.0"
+  },
+  "scripts": {
+    "build": "pika build",
+    "lint": "standard",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "eslintIgnore": [
+    "example.js"
+  ]
+}
