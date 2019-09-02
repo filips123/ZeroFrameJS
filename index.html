@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>ZeroFrameJS Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">ZeroFrameJS</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="ZeroFrame.html">ZeroFrame</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1>ZeroFrameJS</h1>
+<p><a href="https://www.npmjs.com/package/zeroframe-ws-client/"><img src="https://img.shields.io/npm/v/zeroframe-ws-client.svg?style=flat-square&amp;label=version" alt="version"></a>
+<a href="https://www.npmjs.com/package/zeroframe-ws-client/"><img src="https://img.shields.io/npm/dt/zeroframe-ws-client.svg?style=flat-square&amp;label=downloads" alt="downloads"></a>
+<a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/npm/l/zeroframe-ws-client.svg?style=flat-square&amp;label=license" alt="license"></a>
+<a href="https://nodejs.org/"><img src="https://img.shields.io/node/v/zeroframe-ws-client?style=flat-square&amp;label=node" alt="node"></a>
+<a href="https://travis-ci.com/filips123/ZeroFrameJS/"><img src="https://img.shields.io/travis/com/filips123/ZeroFrameJS.svg?style=flat-square&amp;labelbuild" alt="build"></a></p>
+<p>ZeroFrame WebSocket API for JavaScript.</p>
+<h2>Description</h2>
+<p>This is JavaScript WebSocket client for <a href="https://zeronet.io/">ZeroFrame API</a>. It supports (almost) same features as default ZeroFrame that is included in ZeroNet sites, but it is using WebSocket client so it can be used in local programs, such as Node.js and Electron. It can't be used in browsers because of CORS restrictions.</p>
+<h2>Installation</h2>
+<h3>Requirements</h3>
+<p>ZeroFrameJS requires Node.js 8 or higher.</p>
+<h3>With Yarn</h3>
+<p>The recommended way to install ZeroFrameJS is with Yarn.</p>
+<pre class="prettyprint source lang-bash"><code>yarn add zeroframe-ws-client
+</code></pre>
+<h3>With NPM</h3>
+<p>Alternatively, you can also install it with NPM but it won't respect <code>yarn.lock</code> file.</p>
+<pre class="prettyprint source lang-bash"><code>npm install --save zeroframe-ws-client
+</code></pre>
+<h2>Usage</h2>
+<h3>Importing Package</h3>
+<p>You can import ZeroFrameJS is with CJS or ESM.</p>
+<pre class="prettyprint source lang-js"><code>const ZeroFrame = require('zeroframe-ws-client') # Using CJS
+import ZeroFrame from 'zeroframe-ws-client' # Using ESM
+</code></pre>
+<h3>Creating Connection</h3>
+<p>To create a connection, you need to specify the ZeroNet site address.</p>
+<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame('1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D')
+</code></pre>
+<p>If ZeroNet instance is using <code>Multiuser</code> plugin, you need to specify a master address of the account you want to use. Account must already exist on the instance.</p>
+<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+  '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
+    multiuser: {
+      masterAddress: '1Hxki73XprDRedUdA3Remm3kBX5FZxhFR3'
+    }
+})
+</code></pre>
+<p>If you want to create a new account, you also need to specify a master seed of it. Note that this feature is unsafe on the untrusted proxy. Also, it is currently not implemented yet.</p>
+<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+  '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
+    multiuser: {
+      masterAddress: '1KAtuzxwbD1QuMHMuXWcUdoo5ppc5wnot9',
+      masterSeed: 'fdbaf75427ba69a3d4aa8e19372e05879e9e2d866e579dd30be25e6fab7e3fb2'
+    }
+})
+</code></pre>
+<p>If needed, you can also specify protocol, host and port of ZeroNet instance.</p>
+<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+  '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
+    instance: {
+      host: '192.168.1.1`,
+      port: 8080,
+      secure: true
+    }
+})
+</code></pre>
+<p>Log and error message from <code>zeroframe.log</code> and <code>zeroframe.error</code> will not be displayed by default. If you want to, you can also display them as debug info.</p>
+<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+  '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
+    show: {
+      log: true,
+      error: true
+    }
+})
+</code></pre>
+<p>By default, the client will try to reconnect WebSocket if the connection was closed every 5 seconds. You can also configure time delay and total attempts. Delay is specified in milliseconds. The number of attempts <code>-1</code> means infinity and <code>0</code> means zero (disabled reconnecting).</p>
+<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+  '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
+      reconnect: {
+        attempts: 10,
+        delay: 1000
+      }
+})
+</code></pre>
+<p>The client will then obtain wrapper key to the site and connect to WebSocket using it.</p>
+<p>You can now normally use ZeroFrame API. Just remember that there is no wrapper, so wrapper commands are not available. The client is connected directly to the WebSocket server, so you need to use its commands.</p>
+<p>Note that the WebSocket server sometimes sends commands (<code>notification</code>, <code>progress</code>, <code>error</code>, <code>prompt</code>, <code>confirm</code>, <code>setSiteInfo</code>, <code>setAnnouncerInfo</code>, <code>updating</code>, <code>redirect</code>, <code>injectHtml</code>, <code>injectScript</code>) that are normally handled by the wrapper. Because there is no wrapper, you need to handle those commands yourself if needed. Commands <code>response</code> and <code>ping</code> are already handled by this client so you don't need to handle them.</p>
+<h3>Sending Command</h3>
+<p>You can use the <code>cmd</code> method to issue commands.</p>
+<pre class="prettyprint source lang-js"><code>zeroframe.cmd(
+  'siteInfo',
+  {},
+  (result) => {
+    console.log(result)
+  }
+)
+</code></pre>
+<p>You can also use the <code>cmdp</code> method to get results as JavaScript promises.</p>
+<pre class="prettyprint source lang-js"><code>let result = await zeroframe.cmd('siteInfo', {})
+</code></pre>
+<h3>Sending Response</h3>
+<p>To submit responses, you need to use <code>response</code> command.</p>
+<pre class="prettyprint source lang-js"><code>zeroframe.response(10, 'Hello World')
+</code></pre>
+<h3>Logging Information</h3>
+<p>There are also <code>log</code> and <code>error</code> methods which are available for logging. They will display output to console if enabled.</p>
+<pre class="prettyprint source lang-js"><code>zeroframe.log('Connected')
+zeroframe.error('Connection failed')
+</code></pre>
+<h3>Handling Connection</h3>
+<p>There are also public handler methods which you can overwrite to add your own logic to ZeroFrame.</p>
+<pre class="prettyprint source lang-js"><code>class ZeroApp extends ZeroFrame {
+  onRequest (cmd, message) {
+    if (cmd === 'helloWorld') {
+      this.log('Hello World')
+    }
+  }
+
+  onOpenWebsocket (event) {
+    this.log('Connected to WebSocket')
+  }
+
+  onErrorWebsocket (event) {
+    this.error('WebSocket connection error')
+  }
+
+  onCloseWebsocket (event) {
+    this.error('WebSocket connection closed')
+  }
+}
+</code></pre>
+<h3>Other Examples</h3>
+<p>You could also look to <a href="https://github.com/filips123/ZeroFrameJS/blob/master/example.js"><code>example.js</code></a> or <a href="https://zeroframe.js.org/">API documentation</a>.</p>
+<h2>Versioning</h2>
+<p>This library uses <a href="https://semver.org/">SemVer</a> for versioning. For the versions available, see <a href="https://github.com/filips123/ZeroFrameJS/tags/">the tags</a> on this repository.</p>
+<h2>License</h2>
+<p>This library is licensed under the MIT license. See the <a href="https://github.com/filips123/ZeroFrameJS/blob/master/LICENSE">LICENSE</a> file for details.</p></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+	
+		on 2019-09-02
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
