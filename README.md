@@ -183,6 +183,18 @@ class ZeroApp extends ZeroFrame {
 }
 ```
 
+### Calling Commands Directly
+
+You can also directly call commands via `Proxy` object. Command name is accepted as an object's property and parameters are accepted as a method's arguments. Command returns `Promise` with the result.
+
+ * Command with no arguments can be accessed with `zeroframe.proxy.cmdName()`.
+ * Command with keyword arguments can be accessed with `zeroframe.proxy.cmdName({key1: value1, key2: value2})`.
+ * Command with normal arguments can be accessed with `zeroframe.proxy.cmdName(value1, value2)`.
+
+```js
+let siteInfo = await zeroframe.proxy.siteInfo()
+```
+
 ### Other Examples
 
 You could also look to [`example.js`][link-example] or [API documentation][link-documentation].
