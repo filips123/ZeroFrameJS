@@ -51,13 +51,13 @@ import ZeroFrame from 'zeroframe-ws-client' // Using ESM
 To create a connection, you need to specify the ZeroNet site address.
 
 ```js
-const zeroframe = ZeroFrame('1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D')
+const zeroframe = new ZeroFrame('1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D')
 ```
 
 If ZeroNet instance is using `Multiuser` plugin, you need to specify a master address of the account you want to use. Account must already exist on the instance.
 
 ```js
-const zeroframe = ZeroFrame(
+const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
     multiuser: {
       masterAddress: '1Hxki73XprDRedUdA3Remm3kBX5FZxhFR3'
@@ -68,7 +68,7 @@ const zeroframe = ZeroFrame(
 If you want to create a new account, you also need to specify a master seed of it. Note that this feature is unsafe on the untrusted proxy. Also, it is currently not implemented yet.
 
 ```js
-const zeroframe = ZeroFrame(
+const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
     multiuser: {
       masterAddress: '1KAtuzxwbD1QuMHMuXWcUdoo5ppc5wnot9',
@@ -80,10 +80,10 @@ const zeroframe = ZeroFrame(
 If needed, you can also specify protocol, host and port of ZeroNet instance.
 
 ```js
-const zeroframe = ZeroFrame(
+const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
     instance: {
-      host: '192.168.1.1`,
+      host: '192.168.1.1',
       port: 8080,
       secure: true
     }
@@ -93,7 +93,7 @@ const zeroframe = ZeroFrame(
 Log and error message from `zeroframe.log` and `zeroframe.error` will not be displayed by default. If you want to, you can also display them as debug info.
 
 ```js
-const zeroframe = ZeroFrame(
+const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
     show: {
       log: true,
@@ -105,7 +105,7 @@ const zeroframe = ZeroFrame(
 By default, the client will try to reconnect WebSocket if the connection was closed every 5 seconds. You can also configure time delay and total attempts. Delay is specified in milliseconds. The number of attempts `-1` means infinity and `0` means zero (disabled reconnecting).
 
 ```js
-const zeroframe = ZeroFrame(
+const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
       reconnect: {
         attempts: 10,
@@ -137,7 +137,7 @@ zeroframe.cmd(
 You can also use the `cmdp` method to get results as JavaScript promises.
 
 ```js
-let result = await zeroframe.cmd('siteInfo', {})
+let result = await zeroframe.cmdp('siteInfo', {})
 ```
 
 ### Sending Response

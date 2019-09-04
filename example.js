@@ -8,7 +8,7 @@ class ZeroApp extends ZeroFrame {
   }
 }
 
-const zeroapp = ZeroApp('1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D')
+const zeroapp = new ZeroApp('1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D')
 
 zeroapp.cmdp('siteInfo').then((result) => {
   console.log(result)
