@@ -114,10 +114,10 @@ import ZeroFrame from 'zeroframe-ws-client' // Using ESM
 </code></pre>
 <h3>Creating Connection</h3>
 <p>To create a connection, you need to specify the ZeroNet site address.</p>
-<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame('1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D')
+<pre class="prettyprint source lang-js"><code>const zeroframe = new ZeroFrame('1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D')
 </code></pre>
 <p>If ZeroNet instance is using <code>Multiuser</code> plugin, you need to specify a master address of the account you want to use. Account must already exist on the instance.</p>
-<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+<pre class="prettyprint source lang-js"><code>const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
     multiuser: {
       masterAddress: '1Hxki73XprDRedUdA3Remm3kBX5FZxhFR3'
@@ -125,7 +125,7 @@ import ZeroFrame from 'zeroframe-ws-client' // Using ESM
 })
 </code></pre>
 <p>If you want to create a new account, you also need to specify a master seed of it. Note that this feature is unsafe on the untrusted proxy. Also, it is currently not implemented yet.</p>
-<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+<pre class="prettyprint source lang-js"><code>const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
     multiuser: {
       masterAddress: '1KAtuzxwbD1QuMHMuXWcUdoo5ppc5wnot9',
@@ -134,17 +134,17 @@ import ZeroFrame from 'zeroframe-ws-client' // Using ESM
 })
 </code></pre>
 <p>If needed, you can also specify protocol, host and port of ZeroNet instance.</p>
-<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+<pre class="prettyprint source lang-js"><code>const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
     instance: {
-      host: '192.168.1.1`,
+      host: '192.168.1.1',
       port: 8080,
       secure: true
     }
 })
 </code></pre>
 <p>Log and error message from <code>zeroframe.log</code> and <code>zeroframe.error</code> will not be displayed by default. If you want to, you can also display them as debug info.</p>
-<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+<pre class="prettyprint source lang-js"><code>const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
     show: {
       log: true,
@@ -153,7 +153,7 @@ import ZeroFrame from 'zeroframe-ws-client' // Using ESM
 })
 </code></pre>
 <p>By default, the client will try to reconnect WebSocket if the connection was closed every 5 seconds. You can also configure time delay and total attempts. Delay is specified in milliseconds. The number of attempts <code>-1</code> means infinity and <code>0</code> means zero (disabled reconnecting).</p>
-<pre class="prettyprint source lang-js"><code>const zeroframe = ZeroFrame(
+<pre class="prettyprint source lang-js"><code>const zeroframe = new ZeroFrame(
   '1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D', {
       reconnect: {
         attempts: 10,
