@@ -25,18 +25,12 @@ class ZeroFrame {
       throw new Error('Site address is not specified')
     }
 
-    this.masterAddress = options.multiuser.masterAddress
-    this.masterSeed = options.multiuser.masterSeed
+    this.site = site
 
+    this.multiuser = options.multiuser
+    this.instance = options.instance
     this.show = options.show
     this.reconnect = options.reconnect
-
-    this.site = site
-    this.host = options.instance.host
-    this.port = options.instance.port
-    this.secure = options.instance.secure
-
-    this.url = 'http' + (this.secure ? 's' : '') + '://' + this.host + ':' + this.port + '/' + this.site
 
     this.websocketConnected = false
     this.waitingCallbacks = {}
@@ -101,14 +95,16 @@ class ZeroFrame {
   }
 
   /**
-   * Get and return wrapper key
+   * Get and return wrapper key.
    *
    * @return {string} - Wrapper key
    *
    * @private
    */
   async _getWrapperKey () {
-    const wrapperRequest = await fetch(this.url, { headers: { Accept: 'text/html' } })
+    const siteUrl = 'http' + (this.instance.secure ? 's' : '') + '://' + this.instance.host + ':' + this.instance.port + '/' + this.site
+
+    const wrapperRequest = await fetch(siteUrl, { headers: { Accept: 'text/html' } })
     const wrapperBody = await wrapperRequest.text()
 
     const wrapperKey = wrapperBody.match(/wrapper_key = "(.*?)"/)[1]
@@ -117,20 +113,20 @@ class ZeroFrame {
   }
 
   /**
-   * Connect and return WebSocket
+   * Connect and return WebSocket.
    *
    * @return {object} - WebSocket connection
    *
    * @private
    */
   async _getWebsocket () {
-    const wsUrl = 'ws' + (this.secure ? 's' : '') + '://' + this.host + ':' + this.port + '/Websocket?wrapper_key=' + this.wrapperKey
+    const wsUrl = 'ws' + (this.instance.secure ? 's' : '') + '://' + this.instance.host + ':' + this.instance.port + '/Websocket?wrapper_key=' + this.wrapperKey
     let wsClient
 
-    if (!this.masterAddress) {
+    if (!this.multiuser.masterAddress) {
       wsClient = new WebSocket(wsUrl)
     } else {
-      wsClient = new WebSocket(wsUrl, [], { headers: { Cookie: 'master_address=' + this.masterAddress } })
+      wsClient = new WebSocket(wsUrl, [], { headers: { Cookie: 'master_address=' + this.multiuser.masterAddress } })
     }
 
     wsClient.onmessage = this._onRequest.bind(this)
