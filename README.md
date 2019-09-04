@@ -39,11 +39,11 @@ npm install --save zeroframe-ws-client
 
 ### Importing Package
 
-You can import ZeroFrameJS is with CJS or ESM.
+You can import ZeroFrameJS with CJS or ESM.
 
 ```js
-const ZeroFrame = require('zeroframe-ws-client') # Using CJS
-import ZeroFrame from 'zeroframe-ws-client' # Using ESM
+const ZeroFrame = require('zeroframe-ws-client') // Using CJS
+import ZeroFrame from 'zeroframe-ws-client' // Using ESM
 ```
 
 ### Creating Connection
@@ -207,11 +207,10 @@ This library uses [SemVer][link-semver] for versioning. For the versions availab
 
 This library is licensed under the MIT license. See the [LICENSE][link-license-file] file for details.
 
-
 [icon-version]: https://img.shields.io/npm/v/zeroframe-ws-client.svg?style=flat-square&label=version
 [icon-downloads]: https://img.shields.io/npm/dt/zeroframe-ws-client.svg?style=flat-square&label=downloads
 [icon-license]: https://img.shields.io/npm/l/zeroframe-ws-client.svg?style=flat-square&label=license
-[icon-nodejs]: https://img.shields.io/node/v/zeroframe-ws-client?style=flat-square&label=node
+[icon-nodejs]: https://img.shields.io/node/v/zeroframe-ws-client.svg?style=flat-square&label=node
 [icon-travis]: https://img.shields.io/travis/com/filips123/ZeroFrameJS.svg?style=flat-square&labelbuild
 
 [link-npm]: https://www.npmjs.com/package/zeroframe-ws-client/
