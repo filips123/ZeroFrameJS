@@ -208,6 +208,10 @@ zeroframe.error('Connection failed')
   }
 }
 </code></pre>
+<h3>Closing Connection</h3>
+<p>You can use <code>close</code> method to close WebSocket connection to ZeroFrame API.</p>
+<pre class="prettyprint source lang-js"><code>zeroframe.close()
+</code></pre>
 <h3>Calling Commands Directly</h3>
 <p>You can also directly call commands via <code>Proxy</code> object. Command name is accepted as an object's property and parameters are accepted as a method's arguments. Command returns <code>Promise</code> with the result.</p>
 <ul>
