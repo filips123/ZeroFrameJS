@@ -33,6 +33,7 @@ class ZeroFrame {
     this.reconnect = options.reconnect
 
     this.websocketConnected = false
+    this.websocketClosing = false
     this.waitingCallbacks = {}
     this.waitingMessages = []
     this.nextMessageId = 1
@@ -232,6 +233,9 @@ class ZeroFrame {
     this.websocketConnected = false
 
     this.onCloseWebsocket(event)
+
+    // Don't attempt reconnection if user closes socket
+    if (this.websocketClosing) return
 
     if (this.reconnect.attempts === 0) {
       return
@@ -441,6 +445,17 @@ class ZeroFrame {
       to: to,
       result: result
     })
+  }
+
+  /**
+   * Close websocket connection.
+   *
+   * @return {void}
+   */
+  close () {
+    this.websocketClosing = true
+    this.websocket.close()
+    this.onCloseWebsocket()
   }
 }
 
