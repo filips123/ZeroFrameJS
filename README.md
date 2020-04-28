@@ -17,7 +17,7 @@ This is JavaScript WebSocket client for [ZeroFrame API][link-zeroframe]. It supp
 
 ### Requirements
 
-ZeroFrameJS requires Node.js 8 or higher.
+ZeroFrameJS requires Node.js 10 or higher.
 
 ### With Yarn
 
